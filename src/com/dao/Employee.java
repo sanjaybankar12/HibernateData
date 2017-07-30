@@ -4,9 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="emp_tab")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Employee {
 
-	@Id @GeneratedValue
+	@Id
 	private int id;
 	private String name;
 	private int sal;
