@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.dao.Employee" table="emp_tab">
+		<id name="id" column="ID" type="integer">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="name">
+			<column name="NAME"></column>
+			<type name="string"></type>
+		</property>
+		<property name="sal" column="SAL" type="integer"></property>
+		
+		<union-subclass name="com.dao.WageEmp" table="wage_tab">
+			<property name="hr" column="HR" type="integer"></property>
+			<property name="rt" column="RT" type="integer"></property>
+		</union-subclass>
+		
+		<union-subclass name="com.dao.SalesPerson" table="sals_tab">
+			<property name="comm" column="COMM" type="integer"></property>
+		</union-subclass>
+	</class>
+</hibernate-mapping>

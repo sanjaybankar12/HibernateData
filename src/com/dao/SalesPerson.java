@@ -1,8 +1,8 @@
 package com.dao;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity
 public class SalesPerson extends Employee {
 
 	private int comm;
