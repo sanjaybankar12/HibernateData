@@ -1,10 +1,45 @@
 package com.hib;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+import com.dao.Employee;
+
 public class HibMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+		try{
+			
+			Configuration cfg=new Configuration().configure("hibernate.cfg.xml");
+			
+			StandardServiceRegistryBuilder srrb=new StandardServiceRegistryBuilder(); 
+			srrb.applySettings(cfg.getProperties());
+			StandardServiceRegistry sr=srrb.build();
+			
+			SessionFactory sf=cfg.buildSessionFactory(sr);
+			Session s=sf.openSession();
+			Transaction tr=s.beginTransaction();
+			
+			Employee e=new Employee();
+			e.setId(1);
+			e.setName("Sanjay");
+			e.setSal(60000);
+			
+			s.save(e);
+			
+			tr.commit();
+			s.close();
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 
 }
