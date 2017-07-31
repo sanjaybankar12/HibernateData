@@ -2,17 +2,20 @@ package com.hib;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import com.dao.User;
-import com.dao.Vehicle;
 
 public class HibTestMain {
 
@@ -30,36 +33,25 @@ public class HibTestMain {
 			Session s=sf.openSession();
 			Transaction tr=s.beginTransaction();
 			
-			Vehicle v1=new Vehicle();
-			v1.setName("BMW");
+			Query q=s.createQuery("from User u");
+			List<User> list=q.list();
+			Iterator<User> it=list.iterator();
+			while(it.hasNext())
+			{
+				User u=it.next();
+				System.out.println(u);
+			}
 			
-			Vehicle v2=new Vehicle();
-			v2.setName("Audi");
+			Criteria cr=s.createCriteria(User.class);
+			cr.add(Restrictions.like("name", "%jay"));
+			list=cr.list();
+			it=list.iterator();
+			while(it.hasNext())
+			{
+				User u=it.next();
+				System.out.println(u);
+			}
 			
-			User u1=new User();
-			u1.setName("Sanjay");
-			
-			User u2=new User();
-			u2.setName("Sanju");
-						
-			List<User> ulist=new ArrayList<>();
-			ulist.add(u1);
-			ulist.add(u2);
-			
-			v1.setUlist(ulist);
-			v2.setUlist(ulist);
-			
-			List<Vehicle> vlist=new ArrayList<>();
-			vlist.add(v1);
-			vlist.add(v2);
-			
-			u1.setVlist(vlist);
-			u2.setVlist(vlist);
-			
-			s.save(u1);
-			s.save(u2);
-			s.save(v1);
-			s.save(u2);
 			
 			tr.commit();
 			s.close();

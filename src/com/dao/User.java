@@ -12,9 +12,7 @@ public class User {
 	private int id;
 	@Column(name="NAME")
 	private String name;
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="user_veh_tab",joinColumns=@JoinColumn(name="U_ID"),inverseJoinColumns=@JoinColumn(name="V_ID"))
-	private List<Vehicle> vlist;
+	
 	public int getId() {
 		return id;
 	}
@@ -27,11 +25,9 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Vehicle> getVlist() {
-		return vlist;
-	}
-	public void setVlist(List<Vehicle> vlist) {
-		this.vlist = vlist;
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + "]";
 	}
 	
 	

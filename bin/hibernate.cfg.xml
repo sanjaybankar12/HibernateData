@@ -17,6 +17,5 @@
 		<property name="hibernate.show_sql">true</property>
 		
 		<mapping class="com.dao.User"></mapping>
-		<mapping class="com.dao.Vehicle"></mapping>
 	</session-factory>	
 </hibernate-configuration>
