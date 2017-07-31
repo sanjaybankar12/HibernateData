@@ -1,6 +1,8 @@
 package com.hib;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +12,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import com.dao.Movie;
+import com.dao.Song;
 
 public class HibTestMain {
 
@@ -27,13 +30,19 @@ public class HibTestMain {
 			Session s=sf.openSession();
 			Transaction tr=s.beginTransaction();
 			
-			HashMap<String,String> hm=new HashMap<>(); 
-			hm.put("actress","kristen");
-			hm.put("actor","edword");
+			Song s1=new Song();
+			s1.setName("Jane kyu..");
+			
+			Song s2=new Song();
+			s2.setName("Dil Chahata Hai");
+			
+			List<Song> slist=new ArrayList<>();
+			slist.add(s1);
+			slist.add(s2);
 			
 			Movie mv=new Movie();
-			mv.setName("Twilight");
-			mv.setDetails(hm);
+			mv.setName("Dil Chahata Hai");
+			mv.setSongs(slist);
 			
 			s.save(mv);
 			

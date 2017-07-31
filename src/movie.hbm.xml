@@ -13,10 +13,19 @@
 			<column name="NAME"></column>
 			<type name="string"></type>
 		</property>
-		<map name="details" cascade="all" table="m_detail">
+		<list name="songs" cascade="all">
 			<key column="M_ID"></key>
-			<index column="char_type" type="string"></index>
-			<element column="char_anme" type="string"></element>
-		</map>
+			<index column="idx" type="integer"></index>
+			<one-to-many class="com.dao.Song"/>
+		</list>
+	</class>
+	<class name="com.dao.Song" table="song_tab">
+		<id name="id" column="ID" type="integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name">
+			<column name="NAME"></column>
+			<type name="string"></type>
+		</property>
 	</class>
 </hibernate-mapping>
