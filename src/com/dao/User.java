@@ -1,20 +1,18 @@
 package com.dao;
 
-import java.util.*;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="mov_tab")
-public class Movie {
-
+@Table(name="user_tab")
+public class User {
+	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name="NAME")
 	private String name;
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="move_song_tab",joinColumns=@JoinColumn(name="MV_ID"),inverseJoinColumns=@JoinColumn(name="S_ID"))
-	private List<Song> songs;
+	@OneToOne
+	@JoinColumn(name="V_ID")
+	private Vehicle veh;
 	public int getId() {
 		return id;
 	}
@@ -27,11 +25,12 @@ public class Movie {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Song> getSongs() {
-		return songs;
+	public Vehicle getVeh() {
+		return veh;
 	}
-	public void setSongs(List<Song> songs) {
-		this.songs = songs;
+	public void setVeh(Vehicle veh) {
+		this.veh = veh;
 	}
+	
 	
 }

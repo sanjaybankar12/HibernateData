@@ -16,7 +16,7 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		<property name="hibernate.show_sql">true</property>
 		
-		<mapping class="com.dao.Movie"></mapping>
-		<mapping class="com.dao.Song"></mapping>
+		<mapping class="com.dao.User"></mapping>
+		<mapping class="com.dao.Vehicle"></mapping>
 	</session-factory>	
 </hibernate-configuration>

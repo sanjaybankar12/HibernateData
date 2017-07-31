@@ -11,8 +11,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.dao.Movie;
-import com.dao.Song;
+import com.dao.User;
+import com.dao.Vehicle;
 
 public class HibTestMain {
 
@@ -30,21 +30,15 @@ public class HibTestMain {
 			Session s=sf.openSession();
 			Transaction tr=s.beginTransaction();
 			
-			Song s1=new Song();
-			s1.setName("Jane kyu..");
+			Vehicle v=new Vehicle();
+			v.setName("BMW");
 			
-			Song s2=new Song();
-			s2.setName("Dil Chahata Hai");
+			User u=new User();
+			u.setName("Sanjay");
+			u.setVeh(v);
 			
-			List<Song> slist=new ArrayList<>();
-			slist.add(s1);
-			slist.add(s2);
-			
-			Movie mv=new Movie();
-			mv.setName("Dil Chahata Hai");
-			mv.setSongs(slist);
-			
-			s.save(mv);
+			s.save(v);
+			s.save(u);
 			
 			tr.commit();
 			s.close();

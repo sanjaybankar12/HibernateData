@@ -1,12 +1,10 @@
 package com.dao;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="song_tab")
-public class Song {
+@Table(name="veh_tab")
+public class Vehicle {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -24,4 +22,6 @@ public class Song {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 }
