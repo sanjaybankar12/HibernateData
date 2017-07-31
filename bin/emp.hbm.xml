@@ -5,23 +5,20 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.dao.Employee" table="emp_tab">
+	<class name="com.dao.Employee" table="emp_tab" discriminator-value="e">
 		<id name="id" column="ID" type="integer">
 			<generator class="assigned"></generator>
 		</id>
+		<discriminator column="emptype"></discriminator>
 		<property name="name">
 			<column name="NAME"></column>
 			<type name="string"></type>
 		</property>
 		<property name="sal" column="SAL" type="integer"></property>
 		
-		<union-subclass name="com.dao.WageEmp" table="wage_tab">
-			<property name="hr" column="HR" type="integer"></property>
-			<property name="rt" column="RT" type="integer"></property>
-		</union-subclass>
-		
-		<union-subclass name="com.dao.SalesPerson" table="sals_tab">
-			<property name="comm" column="COMM" type="integer"></property>
-		</union-subclass>
+		<component name="addr" class="com.dao.Address">
+			<property name="city" column="CITY" type="string"></property>
+			<property name="state" column="STATE" type="string"></property>
+		</component>
 	</class>
 </hibernate-mapping>

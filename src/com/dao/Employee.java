@@ -7,6 +7,8 @@ public class Employee {
 	private int id;
 	private String name;
 	private int sal;
+	private Address addr;
+		
 	public int getId() {
 		return id;
 	}
@@ -25,6 +27,11 @@ public class Employee {
 	public void setSal(int sal) {
 		this.sal = sal;
 	}
-	
+	public Address getAddr() {
+		return addr;
+	}
+	public void setAddr(Address addr) {
+		this.addr = addr;
+	}
 	
 }
