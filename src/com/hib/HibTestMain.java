@@ -30,15 +30,36 @@ public class HibTestMain {
 			Session s=sf.openSession();
 			Transaction tr=s.beginTransaction();
 			
-			Vehicle v=new Vehicle();
-			v.setName("BMW");
+			Vehicle v1=new Vehicle();
+			v1.setName("BMW");
 			
-			User u=new User();
-			u.setName("Sanjay");
-			u.setVeh(v);
+			Vehicle v2=new Vehicle();
+			v2.setName("Audi");
 			
-			s.save(v);
-			s.save(u);
+			User u1=new User();
+			u1.setName("Sanjay");
+			
+			User u2=new User();
+			u2.setName("Sanju");
+						
+			List<User> ulist=new ArrayList<>();
+			ulist.add(u1);
+			ulist.add(u2);
+			
+			v1.setUlist(ulist);
+			v2.setUlist(ulist);
+			
+			List<Vehicle> vlist=new ArrayList<>();
+			vlist.add(v1);
+			vlist.add(v2);
+			
+			u1.setVlist(vlist);
+			u2.setVlist(vlist);
+			
+			s.save(u1);
+			s.save(u2);
+			s.save(v1);
+			s.save(u2);
 			
 			tr.commit();
 			s.close();

@@ -1,5 +1,7 @@
 package com.dao;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,9 +12,9 @@ public class User {
 	private int id;
 	@Column(name="NAME")
 	private String name;
-	@OneToOne
-	@JoinColumn(name="V_ID")
-	private Vehicle veh;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="user_veh_tab",joinColumns=@JoinColumn(name="U_ID"),inverseJoinColumns=@JoinColumn(name="V_ID"))
+	private List<Vehicle> vlist;
 	public int getId() {
 		return id;
 	}
@@ -25,11 +27,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Vehicle getVeh() {
-		return veh;
+	public List<Vehicle> getVlist() {
+		return vlist;
 	}
-	public void setVeh(Vehicle veh) {
-		this.veh = veh;
+	public void setVlist(List<Vehicle> vlist) {
+		this.vlist = vlist;
 	}
 	
 	
