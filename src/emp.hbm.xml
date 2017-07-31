@@ -5,11 +5,10 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.dao.Employee" table="emp_tab" discriminator-value="e">
+	<class name="com.dao.Employee" table="emp_tab">
 		<id name="id" column="ID" type="integer">
 			<generator class="assigned"></generator>
 		</id>
-		<discriminator column="emptype"></discriminator>
 		<property name="name">
 			<column name="NAME"></column>
 			<type name="string"></type>
