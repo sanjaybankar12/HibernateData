@@ -1,5 +1,7 @@
 package com.hib;
 
+import java.util.HashMap;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -7,13 +9,12 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import com.dao.Address;
-import com.dao.Employee;
+import com.dao.Movie;
 
-public class HibMain {
+public class HibTestMain {
 
 	public static void main(String[] args) {
-
+		
 		try{
 			
 			Configuration cfg=new Configuration().configure("hibernate.cfg.xml");
@@ -26,17 +27,15 @@ public class HibMain {
 			Session s=sf.openSession();
 			Transaction tr=s.beginTransaction();
 			
-			Address ad=new Address();
-			ad.setCity("Pune");
-			ad.setState("MH");
+			HashMap<String,String> hm=new HashMap<>(); 
+			hm.put("actress","kristen");
+			hm.put("actor","edword");
 			
-			Employee e=new Employee();
-			e.setId(1);
-			e.setName("Sanju");
-			e.setSal(60000);
-			e.setAddr(ad);
-						
-			s.save(e);
+			Movie mv=new Movie();
+			mv.setName("Twilight");
+			mv.setDetails(hm);
+			
+			s.save(mv);
 			
 			tr.commit();
 			s.close();
