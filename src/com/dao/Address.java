@@ -1,5 +1,8 @@
 package com.dao;
 
+import javax.persistence.*;
+
+@Embeddable
 public class Address {
 
 	private String city;

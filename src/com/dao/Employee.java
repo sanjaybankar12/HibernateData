@@ -2,11 +2,17 @@ package com.dao;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name="emp_tab")
 public class Employee {
 
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	@Column(name="NAME")
 	private String name;
+	@Column(name="SALARY")
 	private int sal;
+	@Embedded
 	private Address addr;
 		
 	public int getId() {

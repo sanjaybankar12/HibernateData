@@ -32,7 +32,7 @@ public class HibMain {
 			
 			Employee e=new Employee();
 			e.setId(1);
-			e.setName("Sanjay");
+			e.setName("Sanju");
 			e.setSal(60000);
 			e.setAddr(ad);
 						

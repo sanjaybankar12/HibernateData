@@ -16,6 +16,6 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		<property name="hibernate.show_sql">true</property>
 		
-		<mapping resource="emp.hbm.xml"></mapping>
+		<mapping class="com.dao.Employee"></mapping>
 	</session-factory>	
 </hibernate-configuration>
