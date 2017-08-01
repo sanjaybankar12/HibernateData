@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="user_tab")
+@NamedQuery(name="UserBy.ID",query="select u.name from User u where u.id=?")
+@NamedNativeQuery(name="NativeUserBy.NAME",query="select * from user_tab where NAME LIKE ?")
 public class User {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
